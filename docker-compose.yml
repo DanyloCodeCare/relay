@@ -1,0 +1,14 @@
+version: '3'
+services:
+  redis-server: 
+    image: 'redis'
+  node-app:
+    build: .
+    ports:
+      - "5005:5005"
+    command: npm start
+    environment:
+      REDIS_URL: redis-server
+      REDIS_PORT: 6379
+      REDIS_PREFIX: bridge
+      PORT: 5005
