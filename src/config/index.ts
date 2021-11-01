@@ -1,6 +1,8 @@
 import { THIRTY_DAYS } from "../constants";
 import { RelayModes } from "../types";
 
+const dotenv = require('dotenv').config()
+
 const GITHASH = process.env.GITHASH || "0000000";
 const VERSION = require("../../package.json").version || "0.0.0";
 const LEVELS = ["trace", "debug", "info", "warn", "error", "fatal", "silent"];
@@ -22,6 +24,7 @@ const redis = {
   host: process.env.REDIS_URL || 'localhost',
   port: Number(process.env.REDIS_PORT) || 6379,
   prefix: process.env.REDIS_PREFIX || 'walletconnect',
+  password: process.env.REDIS_PASSWORD
 };
 const mode = (process.env.RELAY_MODE || "any") as RelayModes.All;
 const wakuUrl = process.env.WAKU_URL;
